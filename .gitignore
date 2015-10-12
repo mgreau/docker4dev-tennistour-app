@@ -19,6 +19,7 @@
 # Maven 
 target/
 pom.xml.versionsBackup
+*.bak
 
 # IntelliJ project files 
 *.iml
