@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="tennistour-batch:war exploded">
+    <output-path>$PROJECT_DIR$/app/tennistour-batch/target/tennistour-batch</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="tennistour-batch" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="archive" name="tennistour-core-1.0.0-SNAPSHOT.jar">
+            <element id="module-output" name="tennistour-core" />
+          </element>
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/app/tennistour-batch/target/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="tennistour-batch/web/Web" />
+    </root>
+  </artifact>
+</component>
