@@ -1,0 +1,24 @@
+wildfly:
+  build: ./src/test/resources/wildfly
+  #image: tennistourcore_wildfly
+  ports:
+      - "9990:9990"
+      - "8088:8080"
+  links:
+      - serverbdd:db3
+db3:
+  image: mysql:5.5
+  #name: tt_db
+  volumes_from:
+   - dbdata
+  ports:
+   - "3336:3306"
+  env_file: ./src/test/resources/env.properties
+
+dbdata:
+  image: busybox
+  command: /bin/sh
+  volumes:
+    - /var/lib/mysql
+
+

@@ -1,0 +1,13 @@
+<job id="loadHistoryJob" xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="1.0">
+    <step id="populateMatches" >
+        <chunk item-count="5" skip-limit="5">
+            <reader ref="datasATPReader"/>
+            <processor ref="datasATPProcessor"/>
+            <writer ref="datasATPWriter"/>
+            <skippable-exception-classes>
+                <include class="java.lang.NumberFormatException"/>
+            </skippable-exception-classes>
+        </chunk>
+    </step>
+</job>
+
