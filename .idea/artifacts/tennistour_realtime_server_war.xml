@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="tennistour-realtime-server:war">
-    <output-path>$PROJECT_DIR$/app/tennistour-realtime-server/target</output-path>
-    <root id="archive" name="tennistour-realtime-server-1.0.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="tennistour-realtime-server:war exploded" />
-    </root>
-  </artifact>
-</component>

@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="tennistour-rest-api:war">
-    <output-path>$PROJECT_DIR$/app/tennistour-rest-api/target</output-path>
-    <root id="archive" name="tennistour-rest-api-1.0.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="tennistour-rest-api:war exploded" />
-    </root>
-  </artifact>
-</component>
