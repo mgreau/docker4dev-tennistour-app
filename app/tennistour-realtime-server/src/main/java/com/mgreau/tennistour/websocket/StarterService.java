@@ -54,9 +54,8 @@ public class StarterService {
             logger.severe("Error with Cache " + ex.getCause());
             ex.printStackTrace();
         }
-        Long count = jedis.objectRefcount(jedisKey.getBytes());
         Long nbMatches = jedis.scard(jedisKey.getBytes());
-        logger.info("Number of matches: " + count + "-" + nbMatches);
+        logger.info("Number of matches: " + nbMatches);
 
     }
 
@@ -65,7 +64,14 @@ public class StarterService {
     }
 
     public TennisMatch getMatchFromCache(final Long index) throws Exception{
-        return (TennisMatch) deserialize(jedis.lindex(jedisKey.getBytes(), index));
+        //TODO: find how to get one element
+        for (Iterator<byte[]> it = jedis.smembers(jedisKey.getBytes()).iterator(); it.hasNext();) {
+            TennisMatch m = (TennisMatch) deserialize(it.next());
+            if (new Long(m.getKey()) == index){
+                return m;
+            }
+        }
+        return null;
     }
 
     public Collection<TennisMatch> getAllMatchesFromCache() throws Exception{
