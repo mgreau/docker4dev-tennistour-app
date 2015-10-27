@@ -1,6 +1,6 @@
 <datasources>
-    <datasource jndi-name="java:/jdbc/TennistourDS" pool-name="TennistourDS" enabled="true" use-java-context="true">
-        <connection-url>jdbc:mysql://tt-db-server:3336/tennistour</connection-url>
+    <datasource jndi-name="java:/jboss/datasources/TennistourDS" pool-name="TennistourDS" enabled="true" use-java-context="true">
+        <connection-url>jdbc:mysql://db:3336/tennistour</connection-url>
         <driver>mysql</driver>
         <security>
             <user-name>tennnistour</user-name>
@@ -11,12 +11,4 @@
             <share-prepared-statements>true</share-prepared-statements>
         </statement>
     </datasource>
-    <drivers>
-        <driver name="mysql" module="com.mysql.jdbc">
-            <driver-class>com.mysql.jdbc.Driver</driver-class>
-        </driver>
-        <driver name="h2" module="com.h2database.h2">
-            <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
-        </driver>
-    </drivers>
 </datasources>

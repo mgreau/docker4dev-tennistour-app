@@ -1,0 +1,45 @@
+#
+#  Backend
+#
+
+# Backend:: Cache for Maven (.m2 repository)
+m2_cache:
+  image: busybox
+  labels:
+      com.mgreau.tennistour.maven.cache: "Cache Maven"
+  volumes:
+   - ~/.m2:/root/.m2
+
+# Backend:: Project CodeBase
+ws_source:
+  image: busybox
+  labels:
+      com.mgreau.tennistour.ws.source: "Java sources"
+  volumes:
+   - ./app/:/myproject
+
+# Backend WS:: Build project
+ws_build:
+  image: maven:3.3.3-jdk-7
+  labels:
+    com.mgreau.docker4dev.backend.ws.build: "Build app"
+  command: mvn  package -pl tennistour-realtime-server  -Dmaven.test.skip=true -DskipTests -am -s /root/.m2/settings.xml -DfinalName=ws
+  volumes_from:
+   - m2_cache
+   - ws_source
+  working_dir: /myproject
+  environment:
+    MAVEN_OPTS: -Xshare:auto -Xms128M -Xmx1G -XX:MaxPermSize=256M
+
+# Backend Bacth:: Build project
+batch_build:
+  image: maven:3.3.3-jdk-7
+  labels:
+    com.mgreau.docker4dev.backend.batch.build: "Build app"
+  command: mvn  package -pl tennistour-batch -Dmaven.test.skip=true -DskipTests -am -s /root/.m2/settings.xml -DfinalName=batch
+  volumes_from:
+   - m2_cache
+   - ws_source
+  working_dir: /myproject
+  environment:
+    MAVEN_OPTS: -Xshare:auto -Xms128M -Xmx1G -XX:MaxPermSize=256M

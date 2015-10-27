@@ -1,11 +1,5 @@
 package com.mgreau.tennistour.websocket;
 
-import com.mgreau.tennistour.websocket.decoders.MessageDecoder;
-import com.mgreau.tennistour.websocket.encoders.BetMessageEncoder;
-import com.mgreau.tennistour.websocket.encoders.MatchMessageEncoder;
-import com.mgreau.tennistour.websocket.messages.BetMessage;
-import com.mgreau.tennistour.websocket.messages.MatchMessage;
-
 import java.io.IOException;
 import java.util.Collections;
 import java.util.HashSet;
@@ -21,6 +15,11 @@ import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
+import com.mgreau.tennistour.websocket.messages.BetMessage;
+import com.mgreau.tennistour.websocket.decoders.MessageDecoder;
+import com.mgreau.tennistour.websocket.encoders.BetMessageEncoder;
+import com.mgreau.tennistour.websocket.encoders.MatchMessageEncoder;
+import com.mgreau.tennistour.websocket.messages.MatchMessage;
 
 @ServerEndpoint(
 		value = "/matches/{match-id}",
@@ -135,7 +134,11 @@ public class MatchEndpoint {
         peers.add(session);
        
         //Send live result for this match
-        send(new MatchMessage(ejbService.getMatches().get(matchId)), matchId);
+        try {
+            send(new MatchMessage(ejbService.getMatchFromCache(new Long(matchId))), matchId);
+        } catch (Exception e){
+            logger.severe("Error to get match from cache." + e.getCause());
+        }
     }
     
     @OnClose

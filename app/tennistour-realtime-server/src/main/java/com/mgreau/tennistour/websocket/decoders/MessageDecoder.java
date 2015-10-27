@@ -20,7 +20,6 @@ import javax.websocket.EndpointConfig;
 
 import com.mgreau.tennistour.websocket.messages.BetMessage;
 
-
 /* Decode a JSON message into a BetMessage.
  */
 public class MessageDecoder implements Decoder.Text<BetMessage> {

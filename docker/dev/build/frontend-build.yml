@@ -1,0 +1,35 @@
+#
+# Frontend
+#
+# Frontend:: Cache for Node (.npm repository)
+vc_nodecache:
+  image: busybox
+  labels:
+      com.mgreau.docker4dev.frontend.cache.node: "Cache Node dependencies"
+  volumes:
+   - /cache/.npm
+
+vc_bowercache:
+  image: busybox
+  labels:
+      com.mgreau.docker4dev.frontend.cache.bower: "Cache Bower dependencies"
+  volumes:
+   - /var/cache/.bower_components
+
+#To Build the frontend based on Angular and Material Design
+bc_nodebuild:
+  build: docker/dev/builds/frontend/
+  command: npm config set cache /cache/.npm && npm install
+  volumes:
+   - ./frontend:/data
+  volumes_from:
+    - vc_nodecache
+    - vc_bowercache
+
+# Frontend:: Project CodeBase
+sc_angularproject:
+  image: busybox
+  labels:
+      com.mgreau.docker4dev.websocket: "Web sources"
+  volumes:
+   - .:/myproject

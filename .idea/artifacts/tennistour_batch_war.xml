@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="tennistour-batch:war">
     <output-path>$PROJECT_DIR$/app/tennistour-batch/target</output-path>
-    <root id="archive" name="tennistour-batch.war">
+    <root id="archive" name="tennistour-batch-1.0.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="tennistour-batch:war exploded" />
     </root>
   </artifact>

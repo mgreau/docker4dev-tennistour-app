@@ -1,7 +1,5 @@
 package com.mgreau.tennistour.websocket.encoders;
 
-import com.mgreau.tennistour.websocket.messages.BetMessage;
-
 import java.io.StringWriter;
 
 import javax.json.Json;
@@ -11,6 +9,7 @@ import javax.websocket.EncodeException;
 import javax.websocket.Encoder;
 import javax.websocket.EndpointConfig;
 
+import com.mgreau.tennistour.websocket.messages.BetMessage;
 
 public class BetMessageEncoder implements Encoder.Text<BetMessage> {
 	

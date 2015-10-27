@@ -5,20 +5,29 @@ wildfly:
       - "9990:9990"
       - "8088:8080"
   links:
-      - serverbdd:db3
-db3:
-  image: mysql:5.5
+      - db
+      - cache:redis-cache
+db:
+  image: mysql:5.7
   #name: tt_db
   volumes_from:
    - dbdata
   ports:
    - "3336:3306"
-  env_file: ./src/test/resources/env.properties
+  environment:
+   - MYSQL_ROOT_PASSWORD=tennistour
+   - MYSQL_DATABASE=tennistour
+   - MYSQL_USER=tennistour
+   - MYSQL_PASSWORD=tennistour
+  #env_file: ./src/test/resources/env.properties
 
 dbdata:
   image: busybox
   command: /bin/sh
   volumes:
     - /var/lib/mysql
+
+cache:
+  image: redis
 
 

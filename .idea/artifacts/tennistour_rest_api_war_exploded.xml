@@ -6,9 +6,14 @@
         <element id="directory" name="classes">
           <element id="module-output" name="tennistour-rest-api" />
         </element>
+        <element id="directory" name="lib">
+          <element id="archive" name="tennistour-core-1.0.0-SNAPSHOT.jar">
+            <element id="module-output" name="tennistour-core" />
+          </element>
+        </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/app/tennistour-rest-api/target/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/app/tennistour-rest-api/target/tennistour-rest-api-1.0.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="tennistour-rest-api/web/Web" />
     </root>
