@@ -23,7 +23,7 @@ batch_build:
   image: maven:3.3.3-jdk-7
   labels:
     com.mgreau.docker4dev.backend.batch.build: "Build app"
-  command: mvn  package -pl tennistour-core,tennistour-batch -Dmaven.test.skip=true -DskipTests -am -s /root/.m2/settings.xml -DfinalName=batch
+  command: mvn clean package -pl tennistour-core,tennistour-batch -Dmaven.test.skip=true -DskipTests -am -s /root/.m2/settings.xml -DfinalName=batch
   volumes_from:
    - m2_cache
    - ws_source
