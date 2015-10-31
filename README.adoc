@@ -5,11 +5,7 @@
   git clone git@github.com:mgreau/docker4dev-tennistour-app.git
   cd docker4dev-tennistour-app
 
-  docker-compose -f app-build.yml run
+  docker-compose -f app-build.yml up
 
   docker-compose up
 
-
-== Scale
-
- docker-compose scale ui=1 ws_run=3 batch_run=1

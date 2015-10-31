@@ -21,12 +21,6 @@
       <groupId>javax.batch</groupId>
       <artifactId>javax.batch-api</artifactId>
     </dependency>
-    <!-- Cache Redis -->
-    <dependency>
-      <groupId>redis.clients</groupId>
-      <artifactId>jedis</artifactId>
-      <version>2.7.3</version>
-    </dependency>
   </dependencies>
 
 

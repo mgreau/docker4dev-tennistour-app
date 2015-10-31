@@ -8,13 +8,10 @@
   <packaging>pom</packaging>
 
   <name>Tennis Tournaments Application</name>
-  <description>Java EE / Angular application</description>
+  <description>Java EE / Batch API application</description>
   <modules>
     <module>tennistour-core</module>
     <module>tennistour-batch</module>
-    <module>tennistour-rest-api</module>
-    <module>tennistour-realtime-server</module>
-    <module>tennistour-ui</module>
   </modules>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
