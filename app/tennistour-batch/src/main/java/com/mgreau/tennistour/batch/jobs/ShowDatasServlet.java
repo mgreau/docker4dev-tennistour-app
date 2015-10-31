@@ -47,7 +47,7 @@ public class ShowDatasServlet extends HttpServlet {
       out.println("<head>");
       out.println("<title>All Players</title>");
       out.println("</head>");
-      out.println("<body><a href=\"./\">Home</a>");
+      out.println("<body><a href=\"./index.jsp\">Home</a>");
 
       out.println("<h1>All Tournament " + request.getContextPath() + "</h1>");
       out.println("<ul>");

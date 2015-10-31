@@ -9,7 +9,7 @@
   </parent>
   <artifactId>tennistour-batch</artifactId>
   <packaging>war</packaging>
-  <name>TT Batch</name>
+  <name>TT Batch API 1.0 - Java EE7</name>
   <description>Load history datas of tennis tournaments</description>
   <dependencies>
     <dependency>

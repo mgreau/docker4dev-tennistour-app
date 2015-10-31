@@ -7,7 +7,7 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name = "MATCH")
+@Table(name = "MATCHES")
 @XmlRootElement
 public class Match implements Serializable {
   private static final long serialVersionUID = 1L;
@@ -20,15 +20,15 @@ public class Match implements Serializable {
   @Temporal(TemporalType.DATE)
   private Date matchDate;
 
-  @ManyToOne
+  @ManyToOne( cascade = CascadeType.ALL )
   @JoinColumn(name = "PLAYER1_ID", nullable = false)
   private Player player1;
 
-  @ManyToOne
+  @ManyToOne( cascade = CascadeType.ALL )
   @JoinColumn(name = "PLAYER2_ID", nullable = false)
   private Player player2;
 
-  @ManyToOne
+  @ManyToOne( cascade = CascadeType.ALL )
   @JoinColumn(name = "TOURNAMENT_ID", nullable = false)
   private Tournament tournament;
 

@@ -3,17 +3,7 @@ package com.mgreau.tennistour.core.entities;
 import java.io.Serializable;
 import java.util.Collection;
 
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -23,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 //@Table(name = "TOURNAMENT")
-@Table(name = "TOURNAMENT", uniqueConstraints = @UniqueConstraint(columnNames = { "IDASSOCIATION", "YEAR" }))
+@Table(name = "TOURNAMENT", uniqueConstraints = @UniqueConstraint(columnNames = { "ID_ASSOCIATION", "YEAR" }))
 @XmlRootElement
 @NamedQueries({
       @NamedQuery(name = "Tournament.findAll", query = "SELECT t FROM Tournament t"),
@@ -40,12 +30,14 @@ public class Tournament implements Serializable
    /** ID ATP/WTA */
    @Basic(optional = false)
    @NotNull
+   @Column(name = "ID_ASSOCIATION")
    private Integer idAssociation;
 
    /** ATP or WTA */
    @Basic(optional = false)
    @NotNull
    @Size(min = 3, max = 3)
+   @Column(name = "TYPE_ASSOCIATION")
    private String typeAssociation;
 
    @Basic(optional = false)
@@ -86,6 +78,7 @@ public class Tournament implements Serializable
    @Min(3)
    @Max(5)
    @Digits(integer = 1, fraction = 0)
+   @Column(name = "BEST_OF_SET")
    private Integer bestOfSet;
 
    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tournament")

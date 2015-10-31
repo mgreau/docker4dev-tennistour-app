@@ -19,6 +19,8 @@ batch_run:
   build: ./docker/dev/run/backend
   labels:
     com.mgreau.tennistour.batch.run: "Batch Binaries"
+  ports:
+    - "7777:8080"
   volumes:
     - ./app/tennistour-batch/target/batch:/opt/jboss/wildfly/standalone/deployments/ROOT.war/
   links:
