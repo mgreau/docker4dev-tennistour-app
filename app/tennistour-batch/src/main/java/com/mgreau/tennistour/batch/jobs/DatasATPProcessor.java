@@ -61,15 +61,18 @@ public class DatasATPProcessor implements ItemProcessor {
 		m.setRound(scan.next());
 		tournament.setBestOfSet(scan.nextInt());
 
-		player1.setName(scan.next());
+		String winner = scan.next();
+		player1.setName(winner);
 		player1.setSexe(assoc.equals("ATP")?'M':'F');
 
-		player2.setName(scan.next());
+		String loser = scan.next();
+		player2.setName(loser);
 		player2.setSexe(assoc.equals("ATP")?'M':'F');
 
 		m.setPlayer1(player1);
 		m.setPlayer2(player2);
 		m.setTournament(tournament);
+
 		scan.close();
 		return m;
 

@@ -47,9 +47,9 @@ public class ShowDatasServlet extends HttpServlet {
       out.println("<head>");
       out.println("<title>All Players</title>");
       out.println("</head>");
-      out.println("<body><a href=\"./index.jsp\">Home</a>");
+      out.println("<body><a href=\"/\">Home</a>");
 
-      out.println("<h1>All Tournament " + request.getContextPath() + "</h1>");
+      out.println("<h1>All Tournaments " + request.getContextPath() + "</h1>");
       out.println("<ul>");
       List<Tournament> ts = tBean.listTournaments();
       if (ts == null)
@@ -69,8 +69,8 @@ public class ShowDatasServlet extends HttpServlet {
 	            out.println("<h2>No player or Error!!</h2>");
             else{
             	out.println("<h2>"+players.size()+" players!</h2>");
-            
-            out.println("<h2> MENS :</h2>");
+            out.println("<div style=\"float:left\"> ");
+            out.println("<h2> MEN :</h2>");
             out.println("<ul>");
             List<Player> mens = pBean.listMenPlayers();
             	for (Player m : mens){
@@ -78,8 +78,9 @@ public class ShowDatasServlet extends HttpServlet {
         			out.println("</li>");
             	}
             out.println("</ul>");
-            
-            out.println("<h2> WOMENS :</h2>");
+            out.println("</div>");
+            out.println("<div style=\"float:left\"> ");
+            out.println("<h2> WOMEN :</h2>");
             out.println("<ul>");
             List<Player> women = pBean.listWomenPlayers();
             	for (Player m : women){

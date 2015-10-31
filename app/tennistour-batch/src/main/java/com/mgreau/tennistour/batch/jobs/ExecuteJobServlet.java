@@ -66,7 +66,7 @@ public class ExecuteJobServlet extends HttpServlet {
 				out.println("--> " + j + "<br>");
 			}
 
-			out.println("<br><br><a href=\"./\">Home</a>  - <a href=\"./list\">All players.</a>");
+			out.println("<br><br><a href=\"/\">Home</a>  - <a href=\"./list\">All players.</a>");
 			out.println("</body>");
 			out.println("</html>");
 		} catch (JobStartException | JobSecurityException ex) {

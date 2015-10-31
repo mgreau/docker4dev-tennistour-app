@@ -10,9 +10,7 @@
 			<property name="javax.persistence.schema-generation.database.action"
 				value="create" />
 			<property name="javax.persistence.schema-generation.create-source"
-				value="script" />
-			<property name="javax.persistence.schema-generation.create-script-source"
-								value="META-INF/create.sql" />
+				value="metadata" />
 			<property name="javax.persistence.schema-generation.create-database-schemas" value="true"/>
 			<property name="javax.persistence.schema-generation.drop-source"
 				value="metadata" />
