@@ -6,8 +6,8 @@
         http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
 
     <extension qualifier="docker">
+        <property name="serverUri">https://192.168.99.101:2376</property>
         <property name="definitionFormat">COMPOSE</property>
-        <property name="machineName">docker4dev-ee7-js</property>
         <property name="dockerContainersFile">docker-compose.yml</property>
     </extension>
 
@@ -17,4 +17,4 @@
             <property name="password">Admin#70365</property>
         </configuration>
     </container>
-</arquillian> 
+</arquillian>

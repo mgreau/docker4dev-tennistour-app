@@ -12,9 +12,9 @@
   <name>TT Core - (JPA2)</name>
 
   <properties>
-    <docker.serverProtocol>https</docker.serverProtocol>
-    <docker.serverIp>192.168.99.100</docker.serverIp>
-    <docker.serverPort>2376</docker.serverPort>
+    <docker.serverProtocol>http</docker.serverProtocol>
+    <docker.serverIp>192.168.99.101</docker.serverIp>
+    <docker.serverPort>2375</docker.serverPort>
   </properties>
 
   <dependencies>

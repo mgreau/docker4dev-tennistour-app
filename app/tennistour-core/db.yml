@@ -1,0 +1,17 @@
+db:
+  image: mysql:5.7
+  container_name: db
+  volumes_from:
+   - dbdata
+  environment:
+   - MYSQL_ROOT_PASSWORD=tennistour
+   - MYSQL_DATABASE=tennistour
+   - MYSQL_USER=tennistour
+   - MYSQL_PASSWORD=tennistour
+  #env_file: ./src/test/resources/env.properties
+
+dbdata:
+  image: busybox
+  command: /bin/sh
+  volumes:
+    - /var/lib/mysql
