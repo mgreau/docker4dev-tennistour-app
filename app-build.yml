@@ -30,3 +30,6 @@ batch_build:
   working_dir: /myproject
   environment:
     MAVEN_OPTS: -Xshare:auto -Xms128M -Xmx1G -XX:MaxPermSize=256M
+
+# Hot deployment
+# mvn package -DfinalName=batch -DskipTests
