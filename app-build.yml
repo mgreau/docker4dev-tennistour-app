@@ -20,10 +20,10 @@ ws_source:
 
 # Backend WS:: Build project
 ws_build:
-  image: maven:3.3.3-jdk-7
+  image: maven:3.2.3-jdk-8
   labels:
-    com.mgreau.docker4dev.backend.ws.build: "Build app"
-  command: mvn  package -pl tennistour-core,tennistour-realtime-server  -Dmaven.test.skip=true -DskipTests -am -s /root/.m2/settings.xml -DfinalName=ws
+    com.mgreau.docker4dev.backend.ws.build: "Build WS app"
+  command: mvn clean package -pl tennistour-core,tennistour-realtime-server  -Dmaven.test.skip=true -DskipTests -am -s /root/.m2/settings.xml -DfinalName=ws
   volumes_from:
    - m2_cache
    - ws_source
@@ -35,7 +35,7 @@ ws_build:
 batch_build:
   image: maven:3.3.3-jdk-7
   labels:
-    com.mgreau.docker4dev.backend.batch.build: "Build app"
+    com.mgreau.docker4dev.backend.batch.build: "Build Batch app"
   command: mvn  package -pl tennistour-core,tennistour-batch -Dmaven.test.skip=true -DskipTests -am -s /root/.m2/settings.xml -DfinalName=batch
   volumes_from:
    - m2_cache
