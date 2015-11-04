@@ -7,14 +7,14 @@
 		<jta-data-source>java:/jboss/datasources/TennistourDS</jta-data-source>
 		<properties>
 
-			<property name="javax.persistence.schema-generation.database.action"
-				value="create" />
+			<property name="hibernate.hbm2ddl.auto"
+				value="update" />
 			<property name="javax.persistence.schema-generation.create-source"
 				value="metadata" />
 			<property name="javax.persistence.schema-generation.create-database-schemas" value="true"/>
 			<property name="javax.persistence.schema-generation.drop-source"
 				value="metadata" />
-			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
 
 
