@@ -1,4 +1,4 @@
-= Angular Java EE 7 App & Docker
+= Java EE 7 / Angular App with Docker
 Maxime Gréaun <@mgreau>
 :imagesdir: ./doc/img
 :toc: preamble
@@ -9,6 +9,8 @@ And how to quickly run, test and debug a whole Java EE 7 / Angular Application w
 
 image::docker4dev-containers.png[Screenshot of Containers architectures for Batch / WebSocket Java EE 7 Apps]
 
+This application was used at @HanoiJUG to illustrate this talk:
+http://www.slideshare.net/HanoiJUG/improve-your-java-environment-with-docker
 
 == Prerequisites
 
