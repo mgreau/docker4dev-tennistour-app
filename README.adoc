@@ -1,14 +1,46 @@
-= Getting Started
+= Angular Java EE 7 App & Docker
+Maxime Gréaun <@mgreau>
+:imagesdir: ./doc/img
+:toc: preamble
+:toclevels: 4
 
-== Default
+This project shows how to use Docker on your Java development environment.
+And how to quickly run, test and debug a whole Java EE 7 / Angular Application with Docker containers:
 
-  git clone git@github.com:mgreau/docker4dev-tennistour-app.git
-  cd docker4dev-tennistour-app
+image::docker4dev-containers.png[Screenshot of Containers architectures for Batch / WebSocket Java EE 7 Apps]
 
-  docker-compose -f app-build.yml up
 
-  docker-compose up
+== Prerequisites
 
+You only need Docker, docker-machine and docker-compose installed.
+
+== Git clone & docker-compose up
+
+[source, bash]
+--
+# Create your docker environment
+$ docker-machine create docker4dev-ee7-js
+$ eval $(docker-machine env docker4dev-ee7-js)
+
+# Get sources and Docker configuration files
+$ git clone git@github.com:mgreau/docker4dev-tennistour-app.git
+$ cd docker4dev-tennistour-app
+
+# Build Maven and Angular projects
+$ docker-compose -f app-build.yml up
+
+# Starts all containers
+$ docker-compose up
+
+# Open Batch Java EE 7 Application
+$ open http://$(docker-machine ip docker4dev-ee7-js):7777
+
+# Open Angular Websocket Java EE 7 Application
+$ open http://$(docker-machine ip docker4dev-ee7-js):8888
+--
+
+
+image::docker4dev-app.png[Screenshot of Batch / WebSocket Java EE 7 Apps]
 
 == Scale
 
