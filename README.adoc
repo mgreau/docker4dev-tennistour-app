@@ -38,7 +38,7 @@ $ docker-compose up
 $ open http://$(docker-machine ip docker4dev-ee7-js):7777
 
 # Open Angular Websocket Java EE 7 Application
-$ open http://$(docker-machine ip docker4dev-ee7-js):8888
+$ open http://$(docker-machine ip docker4dev-ee7-js):8888/live.html
 --
 
 
