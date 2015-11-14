@@ -2,6 +2,10 @@
 # Default excludes
 #
 
+# Dependencies Cache
+cache/.m2/repository
+cache/.m2/*.xml
+
 # Binaries
 *.7z
 *.dmg

@@ -7,8 +7,10 @@ m2_cache:
   image: busybox
   labels:
       com.mgreau.tennistour.maven.cache: "Cache Maven"
+  #command: mkdir /root/.m2/repository
   volumes:
-   - ~/.m2:/root/.m2
+   - ./cache/.m2/repository:/root/.m2/repository
+   - ./cache/.m2/settings.xml:/root/.m2/settings.xml
 
 # Backend:: Project CodeBase
 ws_source:
@@ -23,7 +25,7 @@ ws_build:
   image: maven:3.2.3-jdk-8
   labels:
     com.mgreau.docker4dev.backend.ws.build: "Build WS app"
-  command: mvn clean package -pl tennistour-core,tennistour-realtime-server  -Dmaven.test.skip=true -DskipTests -am -s /root/.m2/settings.xml -DfinalName=ws
+  command: mvn -X -e package -pl tennistour-core,tennistour-realtime-server  -Dmaven.test.skip=true -DskipTests -am -s /root/.m2/settings.xml -DfinalName=ws
   volumes_from:
    - m2_cache
    - ws_source
@@ -36,7 +38,7 @@ batch_build:
   image: maven:3.3.3-jdk-7
   labels:
     com.mgreau.docker4dev.backend.batch.build: "Build Batch app"
-  command: mvn  package -pl tennistour-core,tennistour-batch -Dmaven.test.skip=true -DskipTests -am -s /root/.m2/settings.xml -DfinalName=batch
+  command: mvn -X -e  package -pl tennistour-core,tennistour-batch -Dmaven.test.skip=true -DskipTests -am -s /root/.m2/settings.xml -DfinalName=batch
   volumes_from:
    - m2_cache
    - ws_source
