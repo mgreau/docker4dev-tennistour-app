@@ -21,7 +21,7 @@ You only need Docker, docker-machine and docker-compose installed.
 [source, bash]
 --
 # Create your docker environment
-$ docker-machine create docker4dev-ee7-js
+$ docker-machine create --driver virtualbox docker4dev-ee7-js
 $ eval $(docker-machine env docker4dev-ee7-js)
 
 # Get sources and Docker configuration files
