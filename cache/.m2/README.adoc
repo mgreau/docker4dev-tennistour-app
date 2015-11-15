@@ -2,4 +2,4 @@
 
 This directory is the default cache for Maven dependencies related to this app.
 
-You can use your own cache if you have already Maven installed on yur laptop
+You can use your own cache if you have already Maven installed on your laptop
