@@ -1,5 +1,6 @@
 package com.mgreau.tennistour.batch;
 
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -7,6 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.batch.operations.JobOperator;
 import javax.batch.runtime.BatchRuntime;
+import javax.batch.runtime.JobExecution;
 import javax.ejb.Schedule;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -29,12 +31,15 @@ public class StarterServiceJobs {
     }
     
     @Schedule(second="*/30", minute="*",hour="*", persistent=false)
-    public void loadHistoryDatas() {
-    	 //long jid = jo.start("loadHistoryJob", new Properties());
+    public void loadDatas() {
+        final Properties props = new Properties();
+        props.put("csvDatasFileName",
+                  "ausopen_ATP_2013.csv");
+    	 long jid = jo.start("loadHistoryJob", props);
     	 
-    	 //JobExecution je = jo.getJobExecution(jid);
-    	 //logger.log(Level.INFO, "Job created on: " + je.getCreateTime() + "<br>");
-    	 //logger.log(Level.INFO, "Job started on: " + je.getStartTime() + "<br>");
+    	 JobExecution je = jo.getJobExecution(jid);
+    	 logger.log(Level.INFO, "Job created on: " + je.getCreateTime() + "<br>");
+    	 logger.log(Level.INFO, "Job started on: " + je.getStartTime() + "<br>");
     }
     
 }
