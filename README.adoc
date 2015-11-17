@@ -35,10 +35,12 @@ $ docker-compose -f app-build.yml up
 $ docker-compose up
 
 # Open Batch Java EE 7 Application
+# You should have some players already created
 $ open http://$(docker-machine ip docker4dev-ee7-js):7777
 
 # Open Angular Websocket Java EE 7 Application
-$ open http://$(docker-machine ip docker4dev-ee7-js):8888/live.html
+# You should be able to bet on 4 matches of US OPEN
+$ open http://$(docker-machine ip docker4dev-ee7-js):8888
 --
 
 
@@ -46,4 +48,10 @@ image::docker4dev-app.png[Screenshot of Batch / WebSocket Java EE 7 Apps]
 
 == Scale
 
- docker-compose scale ws_run=3
+TODO: Check doc (commands...) and configuration to make the  scale feature works out of the box
+
+ . Uncomment lines at the end of the file  *docker/dev/run/frontend/httpd.conf*
+
+ . Remove and recreate the ui container
+
+ . docker-compose scale ws_run=3
