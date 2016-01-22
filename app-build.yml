@@ -25,7 +25,7 @@ ws_build:
   image: maven:3.2.3-jdk-8
   labels:
     com.mgreau.docker4dev.backend.ws.build: "Build WS app"
-  command: mvn package -pl tennistour-core,tennistour-realtime-server  -Dmaven.test.skip=true -DskipTests -am  -DfinalName=ws
+  command: mvn clean package -pl tennistour-core,tennistour-realtime-server  -Dmaven.test.skip=true -DskipTests -am  -DfinalName=ws
   volumes_from:
    - m2_cache
    - ws_source

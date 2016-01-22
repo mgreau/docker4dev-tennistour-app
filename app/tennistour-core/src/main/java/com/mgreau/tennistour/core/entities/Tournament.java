@@ -224,4 +224,7 @@ public class Tournament implements Serializable
       return true;
    }
 
+   public Collection<Match> getMatches() {
+      return matches;
+   }
 }
