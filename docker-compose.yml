@@ -1,5 +1,6 @@
 # UI Angular
 ui:
+  container_name: "ui"
   build: ./docker/dev/run/frontend
   #image: httpd:2.4.17
   labels:
@@ -9,13 +10,11 @@ ui:
   volumes:
     - ./app/tennistour-ui/app:/usr/local/apache2/htdocs/
   environment:
-    - WEBSOCKET_HOST=docker4devtennistourapp_ws_run
-  links:
-    - ws_run
-    #- ws_run:ws-tennistour
+    - WEBSOCKET_HOST=docker4devtennistourapp_realtime
 
 # Backend:: Batch App
-batch_run:
+batch:
+  container_name: "batch"
   build: ./docker/dev/run/backend
   labels:
     com.mgreau.tennistour.batch.run: "Batch Binaries"
@@ -28,12 +27,12 @@ batch_run:
     - "8787"
   volumes:
     - ./app/tennistour-batch/target/batch:/opt/jboss/wildfly/standalone/deployments/ROOT.war/
-  links:
-      - db
-      - cache:redis-cache
+  environment:
+    - MYSQL_HOST=db
+    - REDIS_HOST=redis-cache
 
 # Backend:: Run WebSocket
-ws_run:
+realtime:
   build: ./docker/dev/run/backend
   labels:
     com.mgreau.tennistour.ws.run: "WS Binaries"
@@ -41,19 +40,22 @@ ws_run:
     - "8080"
   volumes:
     - ./app/tennistour-realtime-server/target/ws:/opt/jboss/wildfly/standalone/deployments/ROOT.war/
-  links:
-      - db
-      - cache:redis-cache
+  environment:
+    - MYSQL_HOST=db
+    - REDIS_HOST=redis-cache
 
-cache:
+redis:
+  container_name: "redis-cache"
   image: redis
 
 dbdata:
+  container_name: "datas"
   image: mysql:5.7
   volumes:
     - /var/lib/mysql
 
-db:
+mysql:
+  container_name: "db"
   image: mysql:5.7
   volumes_from:
     - dbdata

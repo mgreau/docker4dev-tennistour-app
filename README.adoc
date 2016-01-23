@@ -5,7 +5,7 @@ Maxime Gréaun <@mgreau>
 :toclevels: 4
 
 This project shows how to use Docker on your Java development environment.
-And how to quickly run, test and debug a whole Java EE 7 / Angular Application with Docker containers:
+And how to quickly run, test and debug a whole Java EE 7 / Angular / WildFly / Redis / MySQL Application with Docker containers:
 
 image::docker4dev-containers.png[Screenshot of Containers architectures for Batch / WebSocket Java EE 7 Apps]
 
@@ -14,7 +14,7 @@ http://www.slideshare.net/HanoiJUG/improve-your-java-environment-with-docker
 
 == Prerequisites
 
-You only need Docker, docker-machine and docker-compose installed.
+You only need Docker *(version 1.9+)*, docker-machine and docker-compose *(1.5+)* installed.
 
 == Git clone & docker-compose up
 
@@ -32,7 +32,7 @@ $ cd docker4dev-tennistour-app
 $ docker-compose -f app-build.yml up
 
 # Starts all containers
-$ docker-compose up
+$ docker-compose --x-networking up
 
 # Open Batch Java EE 7 Application
 # You should have some players already created
@@ -46,12 +46,34 @@ $ open http://$(docker-machine ip docker4dev-ee7-js):8888
 
 image::docker4dev-app.png[Screenshot of Batch / WebSocket Java EE 7 Apps]
 
-== Scale
+== Scale the realtime server container
 
-TODO: Check doc (commands...) and configuration to make the  scale feature works out of the box
+ . Uncomment the following lines at the end of the file  *./docker/dev/run/frontend/httpd.conf*+
 
- . Uncomment lines at the end of the file  *docker/dev/run/frontend/httpd.conf*
+  #BalancerMember ws://${WEBSOCKET_HOST}_2:8080
+  #BalancerMember ws://${WEBSOCKET_HOST}_3:8080
 
- . Remove and recreate the ui container
+  #BalancerMember http://${WEBSOCKET_HOST}_2:8080
+  #BalancerMember http://${WEBSOCKET_HOST}_3:8080
 
- . docker-compose scale ws_run=3
+ . Execute the commands below:
+
+[source, bash]
+--
+#Remove and recreate the ui container
+$ docker-compose rm ui
+$ docker-compose build ui
+
+# Scale the realtime container to 3 containers
+$ docker-compose --x-networking scale realtime=3
+
+$ open http://$(docker-machine ip docker4dev-ee7-js):8888
+
+# Play with the app and kill one or two *realtime* containers
+--
+
+
+TODO:
+
+* Check doc (commands...) and configuration to make the  scale feature works out of the box
+* Use Consul and Fabio to discover containers
